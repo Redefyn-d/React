@@ -1,20 +1,14 @@
-function List (){
+function List (props){
+    const Items = props.Items;
 
-    const fruits = ["Apple","Orange","Bannana"];
-
-    console.log('List component rendering, fruits array:', fruits);
-
-    const listComponents = fruits.map((fruit, index) => {
-        console.log(`Mapping fruit: ${fruit} at index ${index}`);
-        return <li>{fruit}</li>;
-    });
-
-    console.log('Generated listComponents length:', listComponents.length);
-
-    return (<ol>{listComponents}</ol>);
+    const listItems = Items.map(Item => <li key = {Item.id}>{Item.name}: &nbsp; <b>{Item.cal}</b></li>)
+    return (<><h3>{props.Category}</h3>
+              <ol>{listItems}</ol></>);
 
 }
 
- 
-
+List.defaultProps = {
+    Category : "Category",
+    Items : [],
+}
 export default List
